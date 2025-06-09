@@ -1,7 +1,8 @@
-import mongoose, { ConnectionStates } from "mongoose";
+import mongoose from "mongoose";
 import { DB_URL, NODE_ENV } from "../config/env.js";
 
 if(!DB_URL){
+    console.log("direct from .env", process.env.DB_URL)
     console.log("Checking for the Database URL: ",DB_URL);
     throw new Error("Please Provide the Database URL")
 }

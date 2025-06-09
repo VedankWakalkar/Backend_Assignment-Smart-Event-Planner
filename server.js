@@ -1,8 +1,6 @@
 import app from "./app.js";
 import connectToDatabase from "./database/mongoose.js";
-
-const app= app;
-const PORT = 5000;
+import { PORT } from "./config/env.js";
 
 app.listen(PORT,()=>{
     console.log(`Server is running on https://localhost:${PORT}`);
