@@ -174,7 +174,7 @@ A full Postman collection is available to test:
 
 **Vedank Wakalkar**  
 Full-stack & AI/ML Enthusiast  
-📧 Contact: [vedankwakalkar@gmail.com](mailto:vedankwakalkar@gmail.com)
+📧 Contact: [vedankw11@gmail.com](mailto:vedankw11@gmail.com)
 
 ---
 
