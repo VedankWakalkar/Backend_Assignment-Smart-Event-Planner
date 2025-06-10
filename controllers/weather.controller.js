@@ -1,10 +1,22 @@
 import { success } from "zod/v4";
 import Event from "../models/event.model.js";
 import { findForecastDate, get5DayForecast } from "../services/weatherServices.js";
+import { getCache, setCache } from "../utils/cache.js";
 
 export const getWeatherByLocationAndDate=async(req,res)=>{
     const {location,date}=req.params;
+    const cacheKey=`weather:${location}:${date}`
     try {
+        console.log("Code reaching here : 1")
+        const cached=await getCache(cacheKey);
+        if(cached){
+            return res.status(200).json({
+                success:true,
+                message:"cached",
+                data:cached
+            })
+        }   
+        console.log("Code reaching here : 2")
         const forecast=await get5DayForecast(location);
         const filtered = findForecastDate(forecast.list,date);
         console.log("filterd Data : ",filtered)
@@ -14,6 +26,9 @@ export const getWeatherByLocationAndDate=async(req,res)=>{
                 message:"No forecast found on the given date"
             })
         }
+
+        await setCache(cacheKey,filtered)
+
         res.status(200).json({
             success:true,
             data:filtered
