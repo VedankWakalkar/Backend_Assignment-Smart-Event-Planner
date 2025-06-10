@@ -9,5 +9,6 @@ export const {
     NODE_ENV,
     DB_URL,
     PORT,
-    API_KEY
+    API_KEY,
+    REDIS_URL
 }=process.env;
