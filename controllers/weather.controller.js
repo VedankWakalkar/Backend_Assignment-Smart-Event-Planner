@@ -278,3 +278,54 @@ export const getAlternative= async(req,res)=>{
         })
     }
 }
+
+export const getHourlyBreakdown= async(req,res)=>{
+    try {
+        const eventId= req.params.id;
+        const event = await Event.findById(eventId);
+
+        if(!event){
+            return res.status(404).json({
+                success:false,
+                message:`Event with this eventId ${eventId} doesnot exist.`
+            })
+        }
+
+        const forecast= event.weatherAnalysis.details;
+
+        if(!forecast ||  forecast.length==0){
+            return res.status(404).json({
+                success:false,
+                message:"No weather Data"
+            })
+        }
+
+        const hourly= forecast.map((entry)=>{
+            const date=new Date(entry.dt_txt);
+            return {
+                time:date.toLocaleTimeString([],{
+                    hour:'2-digit',
+                    minute:'2-digit'
+                }),
+                temp:entry.main.temp,
+                feelsLike:entry.main.feels_like,
+                condition:entry.weather[0].main,
+                description: entry.weather[0]?.description,
+                precipitation_prob: entry.pop,
+                wind_speed: entry.wind.speed,
+            }
+        })
+
+        res.status(200).json({
+            success:true,
+            eventDate:new Date(event.date).toDateString(),
+            hourly
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
