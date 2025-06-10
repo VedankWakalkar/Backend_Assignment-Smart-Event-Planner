@@ -25,7 +25,7 @@ const eventSchema= new mongoose.Schema({
             default:null
         },
         details:{
-            type:Object,
+            type:[Object],
             default:null
         }
     }
