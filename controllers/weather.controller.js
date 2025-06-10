@@ -43,7 +43,19 @@ export const getWeatherByLocationAndDate=async(req,res)=>{
 
 export const analyzeWeather= async (req,res)=>{
     const {id} = req.params;
+    const cacheKey=`checkWeather:${id}`
     try {
+
+        const cached=await getCache(cacheKey)
+
+        if(cached){
+            return res.status(200).json({
+                success:true,
+                message:"Cached",
+                data:cached
+            })
+        }
+
         const event=await Event.findById(id);
         if(!event){
             return res.status(404).json({
@@ -65,6 +77,8 @@ export const analyzeWeather= async (req,res)=>{
         await event.save();
         console.log("updated Event: ",event.weatherAnalysis)
         
+        await setCache(cacheKey,filteredData)
+
         return res.status(200).json({
             success:true,
             message:'Weather linked',
@@ -269,6 +283,7 @@ export const getAlternative= async(req,res)=>{
           success: true,
           message:`The best Alternative for this Event (which is ${event.type}) is ${alternatives[0].date}`,
           alternatives,
+          event:event
         }); 
 
     } catch (error) {
