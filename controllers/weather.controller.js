@@ -82,8 +82,21 @@ export const analyzeWeather= async (req,res)=>{
 }
 
 export const getSuitability= async(req,res)=>{
+    const eventId=req.params.id;
+    const cacheKey=`suitability:${eventId}`
     try{
-        const eventId=req.params.id;
+        const cached = await getCache(cacheKey);
+
+        if(cached){
+            return res.status(200).json({
+                success:true,
+                message:"Cached",
+                data:{
+                    cached
+                }
+            })
+        }
+
         const event= await Event.findById(eventId);
         if(!event){
             return res.status(404).json({
@@ -147,11 +160,18 @@ export const getSuitability= async(req,res)=>{
         
         event.weatherAnalysis.suitability = suitability;
         await event.save();
+        
+        const responseData={
+            score:avgScore,
+            suitability
+        }
+
+        await setCache(cacheKey,responseData)
 
         res.status(200).json({
         success: true,
         score: avgScore,
-        suitability,
+        responseData,
         });
     }catch(error){
         return res.status(500).json({
