@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import Event from "../models/event.model.js"
 import eventSchema, { updateEventSchema } from "../validations/event.validation.js";
-import { safeParse } from "zod/v4-mini";
 
 export const getEvents= async(req,res)=>{
     try {

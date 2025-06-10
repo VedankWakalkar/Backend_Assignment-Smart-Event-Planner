@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createEvent, getEvents, updateEvent } from "../controllers/event.controller.js";
-import { analyzeWeather, getSuitability } from "../controllers/weather.controller.js";
+import { analyzeWeather, getAlternative, getSuitability } from "../controllers/weather.controller.js";
 
 const eventRouter=Router();
 
@@ -9,5 +9,6 @@ eventRouter.post('/',createEvent)
 eventRouter.put('/:id',updateEvent)
 eventRouter.post('/:id/weather-check',analyzeWeather)
 eventRouter.post('/:id/suitability',getSuitability)
+eventRouter.post('/:id/alternatives',getAlternative)
 
 export default eventRouter;

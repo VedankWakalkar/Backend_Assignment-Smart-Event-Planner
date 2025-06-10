@@ -1,3 +1,4 @@
+import { success } from "zod/v4";
 import Event from "../models/event.model.js";
 import { findForecastDate, get5DayForecast } from "../services/weatherServices.js";
 
@@ -138,6 +139,104 @@ export const getSuitability= async(req,res)=>{
         suitability,
         });
     }catch(error){
+        return res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+export const getAlternative= async(req,res)=>{
+    try {
+        const eventId=req.params.id;
+        const event = await Event.findById(eventId);
+
+        if(!event){
+            return res.status(404).json({
+                success:false,
+                message:`Event with this eventId : ${eventId} does not exists.`
+            })
+        }
+
+        const forecasts= await get5DayForecast(event.location);
+        const forecastList= forecasts.list;
+
+        const dateScores={};
+
+        forecastList.forEach((entry)=>{
+            const date = new Date(entry.dt_txt).toDateString();
+            console.log("Checking the format of Date: ",date)
+
+            if(!dateScores[date]){
+                dateScores[date]=[]
+            }
+            dateScores[date].push(entry)
+        })
+        const typeOfEvent= event.type;
+
+        const evaluatedDates = Object.entries(dateScores).map(([dateStr, entries]) => {
+            console.log("checking the dateStr: ",dateStr)
+            let totalScore = 0;
+        
+        entries.forEach((forecast) => {
+            let score=0;
+
+            if(typeOfEvent === "sports"){
+            
+                const temp=forecast.main.temp;
+                if(temp>=15 &&  temp<=30)score+=30;
+            
+                const percipitation=forecast.populate;
+                if(percipitation<0.25)score+=25;
+            
+                const windSpeed=forecast.wind.speed;
+                if(windSpeed<20)score+=20
+            
+                const weather= forecast.weather.main;
+                if(weather==="Clouds" || weather==="Clear")score+=25
+            
+                totalScore+=score
+            }else{
+            
+                const temp=forecast.main.temp;
+                if(temp>=18 &&  temp<=28)score+=30;
+            
+                const percipitation=forecast.populate;
+                if(percipitation<0.1)score+=30;
+            
+                const windSpeed=forecast.wind.speed;
+                if(windSpeed<15)score+=25
+            
+                const weather= forecast.weather.main;
+                if(weather==="Clouds" || weather==="Clear" || weather=="Few clouds")score+=25
+            
+                totalScore+=score
+            }
+        });
+
+        const avgScore = totalScore / entries.length;
+        return {
+            date: dateStr,
+            avgScore,
+            suitability:
+              avgScore >= 80 ? "Good" : avgScore >= 50 ? "Okay" : "Poor",
+        };
+        });
+
+    // Remove original event date from alternatives
+        const currentEventDate = new Date(event.date).toDateString();
+        const alternatives = evaluatedDates
+          .filter((entry) => entry.date !== currentEventDate && entry.suitability !== "Poor")
+          .sort((a, b) => b.avgScore - a.avgScore)
+          .slice(0, 2); // Return top 2 suggestions
+
+        res.status(200).json({
+          success: true,
+          message:`The best Alternative for this Event (which is ${event.type}) is ${alternatives[0].date}`,
+          alternatives,
+        }); 
+
+    } catch (error) {
         return res.status(500).json({
             success:false,
             message:error.message
