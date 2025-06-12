@@ -1,0 +1,483 @@
+{
+	"info": {
+		"_postman_id": "80a30c43-8985-48b8-ab8e-e3574d6ce789",
+		"name": "Backend-Assignment",
+		"description": "NAME: VEDANK WAKALKAR\n\nEmail: [Vedank.22210400@viit.ac.in](https://mailto:Vedank.22210400@viit.ac.in)\n\nGithub: [https://github.com/VedankWakalkar/Backend_Assignment-Smart-Event-Planner](https://github.com/VedankWakalkar/Backend_Assignment-Smart-Event-Planner)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36497299",
+		"_collection_link": "https://www.postman.com/galactic-water-274658/workspace/backend-assignment/collection/36497299-80a30c43-8985-48b8-ab8e-e3574d6ce789?action=share&source=collection_link&creator=36497299"
+	},
+	"item": [
+		{
+			"name": "Weather Event Planner APIs",
+			"item": [
+				{
+					"name": "Event Management",
+					"item": [
+						{
+							"name": "http://Backend_URL/api/v1/events",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"name\": \"Cricket Tournament\",\r\n//   \"location\": \"Mumbai\",\r\n//   \"date\": \"2025-03-16\",\r\n//   \"type\": \"sports\"\r\n// }\r\n\r\n{\r\n  \"name\": \"Beach Wedding\",\r\n  \"location\": \"Goa\",\r\n  \"date\": \"2025-06-15\",\r\n  \"type\": \"wedding\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								},
+								"description": "Creates a new event in the system with specified details including name, location, date, and event type."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"name\": \"Wedding Ceremony\",\r\n//   \"location\": \"Goa\",\r\n//   \"date\": \"2025-12-10\",\r\n//   \"type\": \"wedding\"\r\n// }\r\n\r\n{\r\n  \"name\": \"Football Match\",\r\n  \"location\": \"Mumbai\",\r\n  \"date\": \"2025-06-10\",\r\n  \"type\": \"sports\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								},
+								"description": "Creates a new event in the system with specified details including name, location, date, and event type."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"name\": \"Hiking Trip\",\r\n//   \"location\": \"Lonavala\",\r\n//   \"date\": \"2025-10-20\",\r\n//   \"type\": \"hiking\"\r\n// }\r\n\r\n{\r\n  \"name\": \"Monsoon Hike\",\r\n  \"location\": \"Lonavala\",\r\n  \"date\": \"2025-06-13\",\r\n  \"type\": \"hiking\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										""
+									]
+								},
+								"description": "Creates a new event in the system with specified details including name, location, date, and event type."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"location\": \"Pune\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/684884e5015455be3fc975e8",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"684884e5015455be3fc975e8"
+									]
+								},
+								"description": "Updates an existing event's details. Allows partial updates of event properties."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								},
+								"description": "Retrieves a list of all events stored in the system."
+							},
+							"response": []
+						}
+					],
+					"description": "Contains all endpoints related to creating, updating, and retrieving events. These requests allow the user to register new events with specific types, locations, and dates, as well as update or fetch all events in the system."
+				},
+				{
+					"name": "Weather Integrations",
+					"item": [
+						{
+							"name": "http://Backend_URL/api/v1/weather/{city}/{yyyy-mm-dd}",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/weather/Mumbai/2025-06-10",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"Mumbai",
+										"2025-06-10"
+									]
+								},
+								"description": "Fetches weather forecast data for a specific city and date using OpenWeatherMap API."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events/{eventId}/weather-check",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/events/6848492520ace734b0934140/weather-check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"6848492520ace734b0934140",
+										"weather-check"
+									]
+								},
+								"description": "Analyzes weather conditions for an event and determines if the weather is suitable for the planned activity."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events/{eventId}/alternatives",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/684884e5015455be3fc975e8/alternatives",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"684884e5015455be3fc975e8",
+										"alternatives"
+									]
+								},
+								"description": "Suggests alternative dates for an event based on better weather conditions."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events/{eventId}/weather-check",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/68488840ab4610dfa7327b37/weather-check",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"68488840ab4610dfa7327b37",
+										"weather-check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events/{eventId}/suitability",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/68488840ab4610dfa7327b37/suitability",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"68488840ab4610dfa7327b37",
+										"suitability"
+									]
+								},
+								"description": "Retrieves a detailed suitability score for an event based on weather conditions and event type."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/events/{eventId}/hourly-breakdown",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/events/68488840ab4610dfa7327b37/hourly-breakdown",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"68488840ab4610dfa7327b37",
+										"hourly-breakdown"
+									]
+								},
+								"description": "Provides detailed hourly weather breakdown for the event date to help with precise timing decisions."
+							},
+							"response": []
+						}
+					],
+					"description": "Handles the integration with OpenWeatherMap to fetch weather forecasts for event locations and dates. Includes endpoints for weather linking, suitability scoring, alternative date suggestions, and hourly breakdowns based on forecast data."
+				},
+				{
+					"name": "Error Handling",
+					"item": [
+						{
+							"name": "http://Backend_URL/api/v1/weather/InvalidCity/2025-06-10",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/weather/InvalidCity/2025-06-10",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"InvalidCity",
+										"2025-06-10"
+									]
+								},
+								"description": "Tests the API's response to invalid city names to ensure proper error handling."
+							},
+							"response": []
+						},
+						{
+							"name": "http://Backend_URL/api/v1/weather/Mumbai/2099-01-01",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://backend-assignment-smart-event-planner.onrender.com/api/v1/weather/Mumbai/2099-01-01",
+									"protocol": "https",
+									"host": [
+										"backend-assignment-smart-event-planner",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"Mumbai",
+										"2099-01-01"
+									]
+								},
+								"description": "Tests the API's response to dates beyond the available forecast range."
+							},
+							"response": []
+						}
+					],
+					"description": "Includes test cases designed to validate the robustness of the API by simulating invalid inputs, such as incorrect city names or dates with no available forecasts. Ensures graceful failure and informative error messages."
+				}
+			],
+			"description": "🔄 **Note:** This backend is deployed on Render’s free tier — please allow a few seconds for the initial response as the server may be waking up.\n\n**Base URL:** `https://backend-assignment-smart-event-planner.onrender.com`"
+		}
+	]
+}
