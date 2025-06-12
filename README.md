@@ -140,7 +140,7 @@ A full Postman collection is available to test:
 - Get Alternatives
 - View Hourly Breakdown
 
-👉 _[You can export this from Postman or request a `.json` export]_
+👉 https://elements.getpostman.com/redirect?entityId=36497299-80a30c43-8985-48b8-ab8e-e3574d6ce789&entityType=collection
 
 ---
 
